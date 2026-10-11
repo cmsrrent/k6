@@ -1,0 +1,15 @@
+{
+  "name": "k6-api-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "k6 performance and functional tests for backend API endpoints",
+  "scripts": {
+    "test": "k6 run tests/posts.test.js",
+    "test:smoke": "k6 run -e PROFILE=smoke tests/posts.test.js",
+    "test:load": "k6 run -e PROFILE=load tests/posts.test.js",
+    "test:stress": "k6 run -e PROFILE=stress tests/posts.test.js",
+    "test:spike": "k6 run -e PROFILE=spike tests/posts.test.js",
+    "test:soak": "k6 run -e PROFILE=soak tests/posts.test.js",
+    "report": "k6 run --summary-export=results/summary.json tests/posts.test.js"
+  }
+}

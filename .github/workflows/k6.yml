@@ -1,0 +1,15 @@
+name: k6 smoke
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: grafana/setup-k6-action@v1
+      - run: k6 run -e PROFILE=smoke -e ENV=dev tests/posts.test.js
+        env:
+          API_TOKEN: ${{ secrets.API_TOKEN }}
