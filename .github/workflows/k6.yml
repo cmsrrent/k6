@@ -1,6 +1,7 @@
 name: k6 smoke
 
 on:
+  push:
   pull_request:
   workflow_dispatch:
 
