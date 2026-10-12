@@ -1,5 +1,9 @@
 # k6 API Test Framework
 
+[![k6 smoke](https://github.com/<OWNER>/<REPO>/actions/workflows/k6.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/k6.yml)
+![k6](https://img.shields.io/badge/k6-performance%20testing-7D64FF?logo=k6&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES%20modules-F7DF1E?logo=javascript&logoColor=black)
+
 Base project for functional and performance testing of backend APIs with k6 (plain ES modules, no build step).
 
 ## Layout
