@@ -1,6 +1,6 @@
 # k6 API Test Framework
 
-[![k6 smoke](https://github.com/cmsrrent/qa-performance-k6/actions/workflows/k6.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/k6.yml)
+[![k6 smoke](https://github.com/cmsrrent/qa-performance-k6/actions/workflows/k6.yml/badge.svg?branch=master)](https://github.com/cmsrrent/qa-performance-k6/actions/workflows/k6.yml)
 ![k6](https://img.shields.io/badge/k6-performance%20testing-7D64FF?logo=k6&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES%20modules-F7DF1E?logo=javascript&logoColor=black)
 
