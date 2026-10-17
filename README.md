@@ -1,8 +1,10 @@
 # k6 API Test Framework
 
-[![k6 smoke](https://github.com/cmsrrent/qa-performance-k6/actions/workflows/k6.yml/badge.svg?branch=master)](https://github.com/cmsrrent/qa-performance-k6/actions/workflows/k6.yml)
+[![k6 smoke](https://github.com/cmsrrent/k6/actions/workflows/k6.yml/badge.svg?branch=master)](https://github.com/cmsrrent/k6/actions/workflows/k6.yml)
 ![k6](https://img.shields.io/badge/k6-performance%20testing-7D64FF?logo=k6&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES%20modules-F7DF1E?logo=javascript&logoColor=black)
+[![Grafana](https://img.shields.io/badge/metrics-Grafana-F46800?logo=grafana&logoColor=white)](https://grafana.com/)
+[![Prometheus](https://img.shields.io/badge/metrics-Prometheus-E6522C?logo=prometheus&logoColor=white)](https://prometheus.io/)
 
 Base project for functional and performance testing of backend APIs with k6 (plain ES modules, no build step).
 
