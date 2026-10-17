@@ -10,6 +10,9 @@
     "test:stress": "k6 run -e PROFILE=stress tests/posts.test.js",
     "test:spike": "k6 run -e PROFILE=spike tests/posts.test.js",
     "test:soak": "k6 run -e PROFILE=soak tests/posts.test.js",
+    "test:load:metrics": "K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write K6_PROMETHEUS_RW_TREND_STATS='p(95),p(99)' k6 run -e PROFILE=load --out experimental-prometheus-rw tests/posts.test.js",
+    "metrics:up": "docker compose up -d",
+    "metrics:down": "docker compose down",
     "report": "k6 run --summary-export=results/summary.json tests/posts.test.js"
   }
 }

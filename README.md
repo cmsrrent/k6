@@ -29,6 +29,32 @@ k6 run -e BASE_URL=http://localhost:8080 tests/posts.test.js
 
 Or via `npm run test:smoke | test:load | test:stress | test:spike | test:soak | report`.
 
+## Viewing load-test metrics in Grafana
+
+The local metrics stack runs Prometheus and Grafana in Docker. Start it with:
+
+```sh
+npm run metrics:up
+```
+
+Then run a load test with Prometheus remote-write output enabled:
+
+```sh
+npm run test:load:metrics
+```
+
+Open [http://localhost:3000](http://localhost:3000), sign in with `admin` / `admin`,
+and open the **k6 Load Test Overview** dashboard in the **k6** folder. Prometheus
+is available at [http://localhost:9090](http://localhost:9090). The dashboard
+shows request duration percentiles, throughput, failed-request rate, and virtual
+users. Metrics are retained locally for 30 days.
+
+To stop the services, run `npm run metrics:down`. This keeps the stored metrics
+and Grafana data; `docker compose down -v` removes both data volumes.
+
+The local metrics stack is intended for development and binds its ports to
+localhost. `test:load:metrics` requires Docker Compose and k6 to be installed.
+
 ## Adding a test
 
 1. Create `api/<resource>.js` modelled on `api/posts.js`.
