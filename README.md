@@ -23,13 +23,32 @@ Base project for functional and performance testing of backend APIs with k6 (pla
 ## Usage
 
 ```sh
-k6 run tests/posts.test.js                                  # smoke, dev env
-k6 run -e PROFILE=load tests/posts.test.js                  # load profile
+k6 run tests/posts.test.js                                  # smoke profile by default
+k6 run -e PROFILE=load tests/posts.test.js                  # choose a profile
 k6 run -e ENV=staging -e API_TOKEN=xxx tests/posts.test.js  # other env + auth
 k6 run -e BASE_URL=http://localhost:8080 tests/posts.test.js
 ```
 
-Or via `npm run test:smoke | test:load | test:stress | test:spike | test:soak | report`.
+The project includes these profiles, selectable with `-e PROFILE=<name>`:
+
+| Profile | Load pattern | Intended use |
+| --- | --- | --- |
+| `smoke` | 1 virtual user (VU) for 30 seconds | Confirm the test and target API work with a minimal load |
+| `load` | Ramp to 20 VUs over 1 minute, hold for 3 minutes, then ramp down over 30 seconds | Check behavior under expected, steady traffic |
+| `stress` | Ramp to 50 VUs over 2 minutes, then 100 over 3 minutes, then 200 over 3 minutes, and ramp down over 2 minutes | Observe behavior as load increases beyond normal levels |
+| `spike` | Ramp to 10 VUs over 30 seconds, jump to 300 over 30 seconds, return to 10 over 1 minute, then ramp down over 30 seconds | Check how the API responds to a sudden traffic burst |
+| `soak` | Ramp to 30 VUs over 2 minutes, hold for 1 hour, then ramp down over 2 minutes | Look for issues that emerge during sustained traffic |
+
+Each profile uses the same default thresholds: fewer than 1% failed HTTP requests,
+95th-percentile request duration below 500 ms, 99th-percentile duration below
+1000 ms, and a check success rate above 99%. A run fails its thresholds if any
+of these conditions are not met. Thresholds and profile stages are defined in
+[`config/options.js`](./config/options.js).
+
+Convenience npm scripts are also available: `npm run test:smoke`,
+`npm run test:load`, `npm run test:stress`, `npm run test:spike`, and
+`npm run test:soak`. Use `npm run test:load:metrics` to run the load profile
+while sending its metrics to the local Prometheus/Grafana stack.
 
 ## Viewing load-test metrics in Grafana
 
